@@ -2,6 +2,7 @@
 import React from "react";
 import Form from "./Form";
 
+
 import "./globals.css";
 import Functionality from "./Try";
 
