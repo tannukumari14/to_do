@@ -70,12 +70,20 @@ const Functionality = () => {
 
         <input
           className='time'
-          placeholder="Completion Time"
+          placeholder="Excimeted Time"
           value={completionTime}
           onChange={(item) => updateCompletionTime(item.target.value)}
         />
 
-        <select 
+
+        <button className='button' onClick={addItem}>
+  			ADD
+		</button>
+        
+
+      </div>
+      <div className='input1'>Status Check</div>
+      <select 
             className='select'
             value={done}
             onChange={(e) => updateDone(e.target.value)}
@@ -84,45 +92,48 @@ const Functionality = () => {
             <option value="Not Done">Not Done</option>
             <option value="All">All</option>  
         </select>
-
-        <button className='button' onClick={addItem}>
-          ADD
-        </button>
-
-      </div>
       <div className='secondDiv'>
         {list.length > 0 ? (
-          list
-            .filter((item) =>{
-                if (done === "All"){
-                    return true
-                }else{
-                    return item.status === done;
-                }
+<table className="custom-table" style={{ width: '100%' }}>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Priority</th>
+      <th>Completion Time</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {list
+      .filter((item) => {
+        if (done === "All") {
+          return true;
+        } else {
+          return item.status === done;
+        }
+      })
+      .map((item) => (
+        <tr key={item.id} style={{ borderBottom: '1px solid #ccc' }}>
+          <td>{item.value}</td>
+          <td>{item.priority}</td>
+          <td>{item.completionTime}</td>
+          <td>{item.status}</td>
+          <td>
+            <button onClick={() => deleteItem(item.id)}>Delete</button>
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
 
-            })
-            .map((item) => (
-                <div key={item.id} className='innerDiv'>
-                <span className="item-text">{item.value}</span>
-                <span className="item-text">Priority: {item.priority}</span>
-                <span className="item-text">Completion Time: {item.completionTime}</span>
-                <span className='item-text'>Status: {item.status}</span>
-                <span>
-                    <button className='innerButton' onClick={() => deleteItem(item.id)}>
-                    Delete
-                    </button>
-                </span>
-                </div>
-          ))
-        ) : (
-          <div className='lastDiv'>No items in the list</div>
-        )}
-      </div>
+) : (
+  <div className='lastDiv'></div>
+)}
+    </div>
     </div>
   );
 };
 
 export default Functionality;
-
-
-
