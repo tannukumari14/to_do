@@ -1,15 +1,19 @@
 "use client"
-import React from 'react';
-import './globals.css';
-import Functionality from './todopage';
+import React from "react";
+import Form from "./Form";
 
-function App() {
+import "./globals.css";
+import Functionality from "./Try";
+import Form from "./todopage";
+
+const page = () => {
   return (
-    <div className="App">
+    <div>
       <Functionality />
+      <Form/>
     </div>
   );
 }
 
-export default App;
+export default page;
 

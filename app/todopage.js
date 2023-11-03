@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-const Functionality = () => {
+const Form = () => {
   const [userInput, setUserInput] = useState('');
   const [priority, setPriority] = useState(' ');
   const [done, setDone] = useState(false); 
@@ -115,4 +115,4 @@ const Functionality = () => {
   );
 };
 
-export default Functionality;
+export default Form;
