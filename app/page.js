@@ -1,10 +1,10 @@
 "use client"
 import React from "react";
-import Form from "./Form";
+//import Form from "./Form";
 
 
 import "./globals.css";
-import Functionality from "./Try";
+import Functionality from "./Functionality";
 
 const page = () => {
   return (

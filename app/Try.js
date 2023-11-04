@@ -1,3 +1,4 @@
+
 "use client"
 import React, { useState } from 'react';
 
@@ -70,7 +71,7 @@ const Functionality = () => {
 
         <input
           className='time'
-          placeholder="Completion Time"
+          placeholder="Excimeted Time"
           value={completionTime}
           onChange={(item) => updateCompletionTime(item.target.value)}
         />
@@ -82,6 +83,16 @@ const Functionality = () => {
         
 
       </div>
+      <div className='input1'>Status Check</div>
+      <select 
+            className='select'
+            value={done}
+            onChange={(e) => updateDone(e.target.value)}
+        >
+            <option value="Done">Done</option>
+            <option value="Not Done">Not Done</option>
+            <option value="All">All</option>  
+        </select>
       <div className='secondDiv'>
         {list.length > 0 ? (
 <table className="custom-table" style={{ width: '100%' }}>
@@ -111,8 +122,6 @@ const Functionality = () => {
           <td>{item.status}</td>
           <td>
             <button onClick={() => deleteItem(item.id)}>Delete</button>
-            
-            <button>DONE</button>
           </td>
         </tr>
       ))
@@ -121,12 +130,9 @@ const Functionality = () => {
 </table>
 
 ) : (
-  <div className='lastDiv'>No items in the list</div>
+  <div className='lastDiv'></div>
 )}
-
-
-
-      </div>
+    </div>
     </div>
   );
 };

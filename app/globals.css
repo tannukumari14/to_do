@@ -1,5 +1,6 @@
-
-
+body{
+	background-color:#e7f5fd
+}
 .first {
   margin: 0 auto; 
   padding: 20px;
@@ -140,8 +141,30 @@
   font-weight: bold;
 }
 
-
-.completed-task {
+.completed {
   text-decoration: line-through;
 }
 
+#add_item{
+	background-color:lavender;
+}
+
+#pro{
+	background-color:lavender;
+}
+
+#time{
+	background-color:lavender;
+}
+
+#select{
+	background-color:lavender;
+}
+
+#priority{
+		background-color:skyBlue;
+}
+
+#com{
+	background-color:skyblue;
+}
