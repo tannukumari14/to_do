@@ -61,7 +61,7 @@ const Functionality = () => {
   return (
     <div style={{ margin: 'auto', maxWidth: '80%' }}>
       <div style={{ fontSize: '24px', textAlign: 'center' }}>TODO_LIST</div>
-      <div style={{ fontSize: '18px', textAlign: 'center' }}>TANU KUMARI</div>
+      <div style={{ fontSize: '18px', textAlign: 'center' }}></div>
       <div>
         <input
           style={{ padding: '6px', marginRight: '10px' }}
@@ -86,7 +86,7 @@ const Functionality = () => {
         id="time"
           style={{ padding: '6px', marginRight: '10px' }}
           type="text"
-          placeholder="Completion Time"
+          placeholder="Excimeted Time"
           value={completionTime}
           onChange={(e) => updateCompletionTime(e.target.value)}
         />
@@ -115,7 +115,7 @@ const Functionality = () => {
             <tr>
               <th style={{ width: '25%' }}>Item</th>
               <th style={{ width: '25%' }}>Priority</th>
-              <th style={{ width: '25%' }}>Completion</th>
+              <th style={{ width: '25%' }}>Excimeted</th>
               <th style={{ width: '25%' }}>Status</th>
             </tr>
           </thead>
