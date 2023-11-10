@@ -40,6 +40,7 @@ const Functionality = () => {
       setCompletionTime('');
       setDone('All');
     }
+  
   };
 
   const deleteItem = (itemId) => {

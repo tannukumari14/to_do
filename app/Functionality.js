@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 
-const Functionality = () => {
+const Function = () => {
   const [userInput, setUserInput] = useState('');
   const [priority, setPriority] = useState('low');
   const [completionTime, setCompletionTime] = useState('');
@@ -123,7 +123,7 @@ const Functionality = () => {
   );
 };
 
-export default Functionality;
+export default Function;
 
 
 

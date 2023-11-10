@@ -1,7 +1,6 @@
 "use client"
-import React from "react";
-import Form from "./Form";
 
+import React from "react";
 import "./globals.css";
 import Functionality from "./Try";
 
