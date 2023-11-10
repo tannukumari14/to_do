@@ -1,4 +1,28 @@
+body{
+	background-color:#e7f5fd
+}
 
+.form-container {
+  text-align: center;
+  border: 5px solid green;
+  padding: 20px; /* Adjust padding as needed */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center;
+}
+
+#myInput,
+#Priority,
+#timing {
+  margin-top: 10px; /* Adjust the margin as needed */
+  width: 300px;
+  height: 30px;
+}
+
+#pro,
+#time {
+  margin: 10px 0;
+}
 
 .first {
   margin: 0 auto; 
@@ -141,14 +165,33 @@
   font-weight: bold;
 }
 
-.input1{
-  font-size: 1.5rem;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 2px;
-  border: 1px solid #ccc;
-  width:150px;
+.completed {
+  text-decoration: line-through;
+}
 
+#add_item{
+	background-color:lavender;
+}
+#prio_input{
+  background-color: lavender;
+}
 
+#pro{
+	background-color:lavender;
+}
 
+#time{
+	background-color:lavender;
+}
+
+#select{
+	background-color:lavender;
+}
+
+#priority{
+		background-color:skyBlue;
+}
+
+#com{
+	background-color:skyblue;
 }

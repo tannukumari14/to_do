@@ -12,6 +12,7 @@ const Functionality = () => {
     setUserInput(value);
   };
 
+  
   const updatePriority = (value) => {
     setPriority(value);
   };
@@ -22,7 +23,7 @@ const Functionality = () => {
 
   const updateDone = (value) => {
     setDone(value);
-  }
+  };
 
   const addItem = () => {
     if (userInput !== '') {
@@ -31,7 +32,7 @@ const Functionality = () => {
         value: userInput,
         priority: priority,
         completionTime: completionTime,
-        status : done,
+        status: done,
       };
 
       setList([...list, userInputItem]);
@@ -40,7 +41,6 @@ const Functionality = () => {
       setCompletionTime('');
       setDone('All');
     }
-  
   };
 
   const deleteItem = (itemId) => {
@@ -48,19 +48,33 @@ const Functionality = () => {
     setList(updatedList);
   };
 
+  const toggleDone = (itemId) => {
+    const updatedList = list.map((listItem) => {
+      if (listItem.id === itemId) {
+        return { ...listItem, status: listItem.status === 'Done' ? 'Not Done' : 'Done' };
+      }
+      return listItem;
+    });
+
+    setList(updatedList);
+  };
+
   return (
-    <div className='first'>
-      <div className='text'>TODO_LIST</div>
-      <div className='name-text'>Shivani</div>
-      <div className='input-text'>
+    <div style={{ margin: 'auto', maxWidth: '80%' }}>
+      <div style={{ fontSize: '24px', textAlign: 'center' }}>TODO_LIST</div>
+      <div style={{ fontSize: '18px', textAlign: 'center' }}></div>
+      <div>
         <input
-          className='input'
+          style={{ padding: '6px', marginRight: '10px' }}
+          id="add_item"
+          type="text"
           placeholder="Add item..."
           value={userInput}
-          onChange={(item) => updateInput(item.target.value)}
+          onChange={(e) => updateInput(e.target.value)}
         />
         <select
-          className='select'
+         id="pro"
+          style={{ padding: '6px', marginRight: '10px' }}
           value={priority}
           onChange={(e) => updatePriority(e.target.value)}
         >
@@ -70,71 +84,121 @@ const Functionality = () => {
         </select>
 
         <input
-          className='time'
+        id="time"
+          style={{ padding: '6px', marginRight: '10px' }}
+          type="text"
           placeholder="Excimeted Time"
           value={completionTime}
-          onChange={(item) => updateCompletionTime(item.target.value)}
+          onChange={(e) => updateCompletionTime(e.target.value)}
         />
 
+        <select
+        id="select"
+          style={{ padding: '6px', marginRight: '10px' }}
+          value={done}
+          onChange={(e) => updateDone(e.target.value)}
+        >
+          <option value="Done">Done</option>
+          <option value="Not Done">Not Done</option>
+          <option value="All">All</option>
+        </select>
 
-        <button className='button' onClick={addItem}>
-  			ADD
-		</button>
-        
+        <button
+          style={{ padding: '8px 16px' }}
+          onClick={addItem}
+        >
+          ADD
+        </button>
 
       </div>
-      <div className='input1'>Status Check</div>
-      <select 
-            className='select'
-            value={done}
-            onChange={(e) => updateDone(e.target.value)}
-        >
-            <option value="Done">Done</option>
-            <option value="Not Done">Not Done</option>
-            <option value="All">All</option>  
-        </select>
-      <div className='secondDiv'>
-        {list.length > 0 ? (
-<table className="custom-table" style={{ width: '100%' }}>
-  <thead>
-    <tr>
-      <th>Item</th>
-      <th>Priority</th>
-      <th>Completion Time</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    {list
-      .filter((item) => {
-        if (done === "All") {
-          return true;
-        } else {
-          return item.status === done;
-        }
-      })
-      .map((item) => (
-        <tr key={item.id} style={{ borderBottom: '1px solid #ccc' }}>
-          <td>{item.value}</td>
-          <td>{item.priority}</td>
-          <td>{item.completionTime}</td>
-          <td>{item.status}</td>
-          <td>
-            <button onClick={() => deleteItem(item.id)}>Delete</button>
-          </td>
-        </tr>
-      ))
-    }
-  </tbody>
-</table>
-
-) : (
-  <div className='lastDiv'></div>
-)}
-    </div>
+      <div>
+        <table style={{ width: '100%' }}>
+          <thead>
+            <tr>
+              <th style={{ width: '25%' }}>Item</th>
+              <th style={{ width: '25%' }}>Priority</th>
+              <th style={{ width: '25%' }}>Excimeted</th>
+              <th style={{ width: '25%' }}>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {list.length > 0 ? (
+              list
+                .filter((item) => {
+                  if (done === 'All') {
+                    return true;
+                  } else {
+                    return item.status === done;
+                  }
+                })
+                .map((item) => (
+                  <tr key={item.id}>
+                    <td
+                      style={{
+                        border: '1px solid #ccc',
+                        padding: '6px',
+                        textDecoration: item.status === 'Done' ? 'line-through' : 'none',
+                      }}
+                    >
+                      {item.value}
+                    </td>
+                    <td
+                    id="priority"
+                      style={{
+                        border: '1px solid #ccc',
+                        padding: '6px',
+                        textDecoration: item.status === 'Done' ? 'line-through' : 'none',
+                      }}
+                    >
+                      Priority: {item.priority}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid #ccc',
+                        padding: '6px',
+                        textDecoration: item.status === 'Done' ? 'line-through' : 'none',
+                      }}
+                    >
+                      Completion Time: {item.completionTime}
+                    </td>
+                    <td
+                    id="com"
+                      style={{
+                        border: '1px solid #ccc',
+                        padding: '6px',
+                        textDecoration: item.status === 'Done' ? 'line-through' : 'none',
+                      }}
+                    >
+                      Status: {item.status}
+                    </td>
+                    <td style={{ border: '1px solid #ccc', padding: '6px' }}>
+                      <button onClick={() => deleteItem(item.id)}>Delete</button>
+                    </td>
+                    <td style={{ border: '1px solid #ccc', padding: '6px' }}>
+                      <button onClick={() => toggleDone(item.id)}>
+                        {item.status === 'Done' ? 'Not Done' : 'Done'}
+                      </button>
+                    </td>
+                  </tr>
+                ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="4"
+                  style={{ border: '1px solid #ccc', padding: '6px', textAlign: 'center' }}
+                >
+                  No items in the list
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
 export default Functionality;
+
+
+
